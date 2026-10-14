@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fonts switch with the active language (set on <html lang="..."> by LanguageProvider) */
+:root[lang="ar"] {
+  --font-display: var(--font-amiri), serif;
+  --font-body: var(--font-cairo), system-ui, sans-serif;
+}
+:root[lang="en"] {
+  --font-display: var(--font-playfair), serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-cream font-body text-ink antialiased;
+  }
+  ::selection {
+    @apply bg-gold/40 text-brand-deep;
+  }
+  /* Arabic needs more breathing room between lines */
+  :root[lang="ar"] body {
+    line-height: 1.85;
+  }
+}
+
+@layer components {
+  .section-pad {
+    @apply py-20 sm:py-28;
+  }
+  /* Subtle geometric pattern used on dark sections */
+  .pattern-dark {
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(220, 181, 106, 0.12) 1px, transparent 0);
+    background-size: 28px 28px;
+  }
+  .pattern-light {
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(47, 74, 53, 0.07) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+}
+
+/* Scroll reveal (see components/ui/Reveal.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-floaty {
+    animation: none;
+  }
+}
