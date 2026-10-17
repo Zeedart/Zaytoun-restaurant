@@ -15,7 +15,6 @@ export default function Home() {
         <About />
         <Menu />
         <Reviews />
-        <Reservation />
       </main>
       <Footer />
     </>
