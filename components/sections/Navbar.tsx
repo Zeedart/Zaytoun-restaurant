@@ -65,9 +65,6 @@ export function Navbar() {
 
         <div className="flex items-center gap-3">
           <LanguageToggle className="border-cream/30 text-cream hover:bg-cream/10" />
-          <ButtonLink href="#reserve" variant="gold" className="hidden sm:inline-flex">
-            {t.nav.bookTable}
-          </ButtonLink>
           <button
             type="button"
             className="rounded-full p-2 text-cream lg:hidden"
