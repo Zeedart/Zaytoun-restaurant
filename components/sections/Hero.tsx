@@ -30,11 +30,7 @@ export function Hero() {
           <p className="mt-6 max-w-xl text-lg text-cream/75">{t.hero.subtitle}</p>
 
           <div className="mt-9 flex flex-wrap gap-4">
-            <ButtonLink href="#reserve" variant="gold">
-              {t.hero.ctaPrimary}
-              <ArrowIcon className="h-4 w-4" />
-            </ButtonLink>
-            <ButtonLink href="#menu" variant="outline-light">
+            <ButtonLink href="#menu" variant="gold">
               {t.hero.ctaSecondary}
             </ButtonLink>
           </div>
