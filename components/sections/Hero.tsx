@@ -3,11 +3,14 @@
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
-import { ArrowIcon, StarIcon } from "@/components/ui/Icons";
+import { StarIcon } from "@/components/ui/Icons";
 import { DishImage } from "@/components/ui/DishImage";
+import type { ITEMS_QUERY_RESULT } from "@/sanity.types";
 
-export function Hero() {
-  const { t } = useLanguage();
+export function Hero({ menuItems }: { menuItems: ITEMS_QUERY_RESULT }) {
+  const { t, lang } = useLanguage();
+
+  const heroItem = menuItems.find((i) => i.hero);
 
   return (
     <section
@@ -52,12 +55,12 @@ export function Hero() {
               seed="hero-bazin"
               alt={t.hero.badgeDish}
               className="h-full w-full rounded-t-[999px] rounded-b-2xl"
-              /* src="/images/hero.jpg"  <- drop a real photo in /public/images and uncomment */
+              src={heroItem?.imageUrl || undefined}
             />
           </div>
           <div className="absolute bottom-8 start-0 animate-floaty rounded-2xl bg-cream px-5 py-4 text-brand-deep shadow-soft sm:-start-4">
             <p className="text-xs font-semibold text-gold">{t.hero.badge}</p>
-            <p className="font-display text-xl font-bold">{t.hero.badgeDish}</p>
+            <p className="font-display text-xl font-bold">{heroItem?.name?.[lang] || t.hero.badgeDish}</p>
           </div>
         </div>
       </Container>

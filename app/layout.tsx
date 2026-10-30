@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Amiri, Cairo, Inter, Playfair_Display } from "next/font/google";
 import { LanguageProvider } from "@/lib/i18n/LanguageProvider";
 import "./globals.css";
+import  {SanityLive}  from "@/sanity/lib/live";
 
 const cairo = Cairo({ subsets: ["arabic", "latin"], variable: "--font-cairo", display: "swap" });
 const amiri = Amiri({
@@ -32,7 +33,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${cairo.variable} ${amiri.variable} ${inter.variable} ${playfair.variable}`}
     >
       <body>
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
+        <SanityLive />
       </body>
     </html>
   );

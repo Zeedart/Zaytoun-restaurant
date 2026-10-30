@@ -275,7 +275,7 @@
             }
           }
         },
-        "optional": true
+        "optional": false
       },
       "tag": {
         "type": "objectAttribute",
@@ -296,6 +296,13 @@
               "name": "tag.reference"
             }
           }
+        },
+        "optional": true
+      },
+      "hero": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
         },
         "optional": true
       }

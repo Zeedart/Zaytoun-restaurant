@@ -61,7 +61,7 @@ export type MenuItems = {
   description: LocaleString;
   price: number;
   category: CategoryReference;
-  image?: {
+  image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
@@ -73,6 +73,7 @@ export type MenuItems = {
       _key: string;
     } & TagReference
   >;
+  hero?: boolean;
 };
 
 export type SanityImageCrop = {
@@ -226,7 +227,7 @@ export type AllSanitySchemaTypes =
 
 // Source: app/page.tsx
 // Variable: ITEMS_QUERY
-// Query: *[_type == "menuItems"] | order(name.en asc) {  _id,  name,  description,  price,  "category": category->{ _id, name },  "imageUrl": image.asset->url,  "tag": tag[]->{ _id, name }}
+// Query: *[_type == "menuItems"] | order(name.en asc) {  _id,  name,  description,  price,  "category": category->{ _id, name },  "imageUrl": image.asset->url,  "tag": tag[]->{ _id, name },  hero}
 export type ITEMS_QUERY_RESULT = Array<{
   _id: string;
   name: LocaleString;
@@ -241,6 +242,7 @@ export type ITEMS_QUERY_RESULT = Array<{
     _id: string;
     name: LocaleString;
   }> | null;
+  hero: boolean | null;
 }>;
 
 // Source: app/page.tsx
@@ -255,7 +257,7 @@ export type CATEGORIES_QUERY_RESULT = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type == "menuItems"] | order(name.en asc) {\n  _id,\n  name,\n  description,\n  price,\n  "category": category->{ _id, name },\n  "imageUrl": image.asset->url,\n  "tag": tag[]->{ _id, name }\n}': ITEMS_QUERY_RESULT;
+    '*[_type == "menuItems"] | order(name.en asc) {\n  _id,\n  name,\n  description,\n  price,\n  "category": category->{ _id, name },\n  "imageUrl": image.asset->url,\n  "tag": tag[]->{ _id, name },\n  hero\n}': ITEMS_QUERY_RESULT;
     '*[_type == "category"] | order(name.en asc) { _id, name }': CATEGORIES_QUERY_RESULT;
   }
 }

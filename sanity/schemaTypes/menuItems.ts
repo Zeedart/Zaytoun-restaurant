@@ -42,7 +42,7 @@ export const menuItems = defineType({
             type: 'image',
             options: {
                 hotspot: true
-            }
+            },
         }),
 
         defineField({
@@ -50,6 +50,14 @@ export const menuItems = defineType({
             title: 'Tag',
             type: 'array',
             of: [{ type: 'reference', to: [{ type: 'tag' }] }],
+        }),
+
+        defineField({
+            name: 'hero',
+            title: 'Hero',
+            type: 'boolean',
+            initialValue: false,
+            description: 'If true, this menu item will be featured in the hero section of the website.'
         }),
     ],
     preview: {

@@ -64,8 +64,6 @@ export function Menu({ menuItems, categories }: Props) {
             <MenuCard key={item._id} item={item} />
           ))}
         </div>
-
-        <p className="mt-10 text-center text-xs text-ink/50">{t.menu.note}</p>
       </Container>
     </section>
   );

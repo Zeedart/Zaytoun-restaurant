@@ -16,7 +16,8 @@ export default async function Home() {
   price,
   "category": category->{ _id, name },
   "imageUrl": image.asset->url,
-  "tag": tag[]->{ _id, name }
+  "tag": tag[]->{ _id, name },
+  hero
 }`);
 
   const CATEGORIES_QUERY = defineQuery(`*[_type == "category"] | order(name.en asc) { _id, name }`);
@@ -27,7 +28,7 @@ export default async function Home() {
     <>
       <Navbar />
       <main>
-        <Hero />
+        <Hero menuItems={menuItems} />
         <About />
         <Menu menuItems={menuItems} categories={categories} />
         <Reviews />
