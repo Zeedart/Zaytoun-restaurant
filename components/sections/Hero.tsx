@@ -5,10 +5,13 @@ import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { StarIcon } from "@/components/ui/Icons";
 import { DishImage } from "@/components/ui/DishImage";
+import { tr } from "@/lib/i18n/tr";
+import type { HOME_QUERY_RESULT } from "@/sanity.types";
 import type { ITEMS_QUERY_RESULT } from "@/sanity.types";
 
-export function Hero({ menuItems }: { menuItems: ITEMS_QUERY_RESULT }) {
+export function Hero({ menuItems, home }: { menuItems: ITEMS_QUERY_RESULT; home: HOME_QUERY_RESULT  }) {
   const { t, lang } = useLanguage();
+  console.log("home?.hero?.title", home?.hero?.title);
 
   const heroItem = menuItems.find((i) => i.hero);
 
@@ -28,7 +31,7 @@ export function Hero({ menuItems }: { menuItems: ITEMS_QUERY_RESULT }) {
             {t.hero.eyebrow}
           </p>
           <h1 className="font-display text-5xl font-bold leading-[1.15] sm:text-6xl lg:text-7xl">
-            {t.hero.title}
+            {tr(home?.hero?.title, lang, "sasahd")}
           </h1>
           <p className="mt-6 max-w-xl text-lg text-cream/75">{t.hero.subtitle}</p>
 

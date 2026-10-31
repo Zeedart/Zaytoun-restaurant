@@ -15,6 +15,12 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: schema.json
+export type LocaleText = {
+  _type: "localeText";
+  en?: string;
+  ar?: string;
+};
+
 export type Tag = {
   _id: string;
   _type: "tag";
@@ -28,6 +34,17 @@ export type LocaleString = {
   _type: "localeString";
   en?: string;
   ar?: string;
+};
+
+export type HomePage = {
+  _id: string;
+  _type: "homePage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  hero?: {
+    title?: LocaleString;
+  };
 };
 
 export type CategoryReference = {
@@ -61,7 +78,7 @@ export type MenuItems = {
   description: LocaleString;
   price: number;
   category: CategoryReference;
-  image: {
+  image?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
@@ -206,8 +223,10 @@ export type Slug = {
 };
 
 export type AllSanitySchemaTypes =
+  | LocaleText
   | Tag
   | LocaleString
+  | HomePage
   | CategoryReference
   | SanityImageAssetReference
   | TagReference
@@ -253,11 +272,21 @@ export type CATEGORIES_QUERY_RESULT = Array<{
   name: LocaleString | null;
 }>;
 
+// Source: app/page.tsx
+// Variable: HOME_QUERY
+// Query: *[_type == "homePage"][0]{ hero }
+export type HOME_QUERY_RESULT = {
+  hero: {
+    title?: LocaleString;
+  } | null;
+} | null;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type == "menuItems"] | order(name.en asc) {\n  _id,\n  name,\n  description,\n  price,\n  "category": category->{ _id, name },\n  "imageUrl": image.asset->url,\n  "tag": tag[]->{ _id, name },\n  hero\n}': ITEMS_QUERY_RESULT;
     '*[_type == "category"] | order(name.en asc) { _id, name }': CATEGORIES_QUERY_RESULT;
+    '*[_type == "homePage"][0]{ hero }': HOME_QUERY_RESULT;
   }
 }

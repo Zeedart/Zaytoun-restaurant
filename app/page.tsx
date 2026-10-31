@@ -22,13 +22,17 @@ export default async function Home() {
 
   const CATEGORIES_QUERY = defineQuery(`*[_type == "category"] | order(name.en asc) { _id, name }`);
 
+  const HOME_QUERY = defineQuery(`*[_type == "homePage"][0]{ hero }`);
+
   const { data: menuItems } = await sanityFetch({ query: ITEMS_QUERY });
   const { data: categories } = await sanityFetch({ query: CATEGORIES_QUERY });
+  const { data: home } = await sanityFetch({ query: HOME_QUERY });
+
   return (
     <>
       <Navbar />
       <main>
-        <Hero menuItems={menuItems} />
+        <Hero menuItems={menuItems} home={home} />
         <About />
         <Menu menuItems={menuItems} categories={categories} />
         <Reviews />
