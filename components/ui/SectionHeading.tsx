@@ -1,3 +1,5 @@
+import { Ornament } from "./Ornament";
+
 type Props = {
   eyebrow?: string;
   title: string;
@@ -27,6 +29,7 @@ export function SectionHeading({ eyebrow, title, subtitle, align = "center", ton
         }`}
       >
         {title}
+        <Ornament className="mx-auto mt-5" />
       </h2>
       {subtitle && (
         <p className={`mt-5 text-base sm:text-lg ${isDark ? "text-cream/70" : "text-ink/65"}`}>

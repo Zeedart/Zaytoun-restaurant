@@ -33,8 +33,11 @@ export default async function Home() {
       <Navbar />
       <main>
         <Hero menuItems={menuItems} home={home} />
+        <div className="sadu-band" />
         <About />
+        <div className="sadu-stripes" />
         <Menu menuItems={menuItems} categories={categories} />
+        <div className="sadu-teeth" />
         <Reviews />
       </main>
       <Footer />

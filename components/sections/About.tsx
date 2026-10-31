@@ -20,13 +20,8 @@ export function About() {
             <DishImage
               seed="about-main"
               alt={t.about.title}
-              className="aspect-[4/5] w-full rounded-3xl shadow-card"
+              className="aspect-[4/5] w-full rounded-t-[999px] rounded-b-3xl shadow-card"
               /* src="/images/about.jpg" */
-            />
-            <DishImage
-              seed="about-small"
-              alt=""
-              className="absolute -bottom-8 end-[-0.5rem] h-40 w-40 rounded-2xl border-4 border-cream shadow-card sm:end-[-2rem] sm:h-48 sm:w-48"
             />
           </div>
         </Reveal>

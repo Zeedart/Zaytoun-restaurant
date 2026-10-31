@@ -2,32 +2,26 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-  "./app/**/*.{ts,tsx}",
-  "./components/**/*.{ts,tsx}",
-  "./lib/**/*.{ts,tsx}",
-  "./data/**/*.{ts,tsx}",
-],
+    "./app/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./lib/**/*.{ts,tsx}",
+    "./data/**/*.{ts,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
         // Olive green + warm cream + brass gold: calm, elegant, Mediterranean
         brand: {
-          DEFAULT: "#2f4a35",
-          light: "#4c6b52",
-          dark: "#1b2c20",
-          deep: "#121e16",
+          DEFAULT: "#9b1c24",   // deep red
+          light: "#c0343c",
+          dark: "#5c1017",
+          deep: "#171011",      // warm black (hero, footer backgrounds)
         },
-        cream: {
-          DEFAULT: "#f8f3e9",
-          dark: "#efe6d2",
-        },
-        sand: "#e4d6b8",
-        gold: {
-          DEFAULT: "#c0913f",
-          light: "#dcb56a",
-        },
-        terracotta: "#b5593a",
-        ink: "#1b1f1a",
+        cream: { DEFAULT: "#f6efe3", dark: "#ede1cd" },
+        sand: "#dfcfae",
+        gold: { DEFAULT: "#e8a02a", light: "#f0b24f" },   // now orange
+        terracotta: "#c8202f",  // bright accent red
+        ink: "#1a1213",
       },
       fontFamily: {
         display: ["var(--font-display)"],

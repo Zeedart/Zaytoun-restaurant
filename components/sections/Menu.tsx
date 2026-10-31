@@ -26,7 +26,7 @@ export function Menu({ menuItems, categories }: Props) {
     }`;
 
   return (
-    <section id="menu" className="section-pad bg-cream-dark">
+    <section id="menu" className="section-pad pattern-light">
       <Container>
         <Reveal>
           <SectionHeading eyebrow={t.menu.eyebrow} title={t.menu.title} subtitle={t.menu.subtitle} />

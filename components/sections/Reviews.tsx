@@ -10,7 +10,7 @@ export function Reviews() {
   const { t } = useLanguage();
 
   return (
-    <section id="reviews" className="pattern-dark section-pad bg-brand text-cream">
+    <section id="reviews" className="pattern-dark section-pad bg-brand-dark text-cream">
       <Container>
         <Reveal>
           <SectionHeading tone="dark" eyebrow={t.reviews.eyebrow} title={t.reviews.title} />
@@ -19,7 +19,7 @@ export function Reviews() {
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {t.reviews.items.map((r, i) => (
             <Reveal key={r.name} delay={i * 120}>
-              <figure className="flex h-full flex-col rounded-3xl border border-cream/10 bg-brand-dark/60 p-8 backdrop-blur">
+              <figure className="flex h-full flex-col rounded-3xl border border-gold/20 bg-black/25 p-8">
                 <div className="flex gap-1 text-gold-light" aria-label="5 / 5">
                   {Array.from({ length: 5 }).map((_, n) => (
                     <StarIcon key={n} className="h-4 w-4" />
