@@ -91,6 +91,7 @@ export type MenuItems = {
     } & TagReference
   >;
   hero?: boolean;
+  story?: boolean;
 };
 
 export type SanityImageCrop = {
@@ -246,7 +247,7 @@ export type AllSanitySchemaTypes =
 
 // Source: app/page.tsx
 // Variable: ITEMS_QUERY
-// Query: *[_type == "menuItems"] | order(name.en asc) {  _id,  name,  description,  price,  "category": category->{ _id, name },  "imageUrl": image.asset->url,  "tag": tag[]->{ _id, name },  hero}
+// Query: *[_type == "menuItems"] | order(name.en asc) {  _id,  name,  description,  price,  "category": category->{ _id, name },  "imageUrl": image.asset->url,  "tag": tag[]->{ _id, name },  hero,  story}
 export type ITEMS_QUERY_RESULT = Array<{
   _id: string;
   name: LocaleString;
@@ -262,6 +263,7 @@ export type ITEMS_QUERY_RESULT = Array<{
     name: LocaleString;
   }> | null;
   hero: boolean | null;
+  story: boolean | null;
 }>;
 
 // Source: app/page.tsx
@@ -285,7 +287,7 @@ export type HOME_QUERY_RESULT = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type == "menuItems"] | order(name.en asc) {\n  _id,\n  name,\n  description,\n  price,\n  "category": category->{ _id, name },\n  "imageUrl": image.asset->url,\n  "tag": tag[]->{ _id, name },\n  hero\n}': ITEMS_QUERY_RESULT;
+    '*[_type == "menuItems"] | order(name.en asc) {\n  _id,\n  name,\n  description,\n  price,\n  "category": category->{ _id, name },\n  "imageUrl": image.asset->url,\n  "tag": tag[]->{ _id, name },\n  hero,\n  story\n}': ITEMS_QUERY_RESULT;
     '*[_type == "category"] | order(name.en asc) { _id, name }': CATEGORIES_QUERY_RESULT;
     '*[_type == "homePage"][0]{ hero }': HOME_QUERY_RESULT;
   }

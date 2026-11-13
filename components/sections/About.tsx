@@ -6,22 +6,24 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { DishImage } from "@/components/ui/DishImage";
 import { FlameIcon, LeafIcon, UsersIcon } from "@/components/ui/Icons";
+import type { ITEMS_QUERY_RESULT } from "@/sanity.types";
 
 const featureIcons = [LeafIcon, FlameIcon, UsersIcon];
 
-export function About() {
+export function About({ menuItems }: { menuItems: ITEMS_QUERY_RESULT }) {
   const { t } = useLanguage();
+  const storyItem = menuItems.find(i => i.story)
 
   return (
     <section id="about" className="section-pad pattern-light">
       <Container className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
         <Reveal>
-          <div className="relative">
+          <div className="relative overflow-hidden rounded-t-[999px] rounded-b-3xl border border-gold/30 p-3">
             <DishImage
               seed="about-main"
               alt={t.about.title}
               className="aspect-[4/5] w-full rounded-t-[999px] rounded-b-3xl shadow-card"
-              /* src="/images/about.jpg" */
+              src={storyItem?.imageUrl || undefined}
             />
           </div>
         </Reveal>

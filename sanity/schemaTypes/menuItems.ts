@@ -59,6 +59,14 @@ export const menuItems = defineType({
             initialValue: false,
             description: 'If true, this menu item will be featured in the hero section of the website.'
         }),
+
+        defineField({
+            name: 'story',
+            title: 'Story',
+            type: 'boolean',
+            initialValue: false,
+            description: 'If true, this menu item will be featured in the story section of the website.'
+        })
     ],
     preview: {
         select: { title: 'name.en', subtitle: 'category.name.en', media: 'image' },

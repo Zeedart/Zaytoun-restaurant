@@ -389,6 +389,13 @@
           "type": "boolean"
         },
         "optional": true
+      },
+      "story": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
       }
     }
   },
